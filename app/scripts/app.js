@@ -16,11 +16,18 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'storeApp.API'
+    'storeApp.API',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($urlRouterProvider, $stateProvider) {
+
+
+    $urlRouterProvider
+    .otherwise('/');
+
+    $stateProvider
+      .state('store', {
+        url: '/',
         templateUrl: 'views/store.html',
         controller: 'StoreCtrl',
         controllerAs: 'store',
@@ -63,15 +70,16 @@ angular
           }
         }
       })
-      .when('/product/:id', {
+      .state('product', {
+        url: '/product/:id',
         templateUrl: 'views/product.html',
         controller: 'ProductCtrl',
         controllerAs: 'product',
         resolve: {
-          product: function($q, $route, MoltinAuth) {
+          product: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin) {
-              moltin.Product.Get($route.current.params.id, function(product) {
+              moltin.Product.Get($stateParams.id, function(product) {
                 deferred.resolve(product);
               });
             });
@@ -79,24 +87,25 @@ angular
           }
         }
       })
-      .when('/category/:id', {
+      .state('category', {
+        url: '/category/:id',
         templateUrl: 'views/category.html',
         controller: 'CategoryCtrl',
         controllerAs: 'category',
         resolve: {
-          category: function($q, $route, MoltinAuth) {
+          category: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Category.Get($route.current.params.id, function(category){
+              moltin.Category.Get($stateParams.id, function(category){
                 deferred.resolve(category);
               });
             });
             return deferred.promise;
           },
-          products: function($q, $route, MoltinAuth) {
+          products: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Product.List({category: $route.current.params.id}, function(products){
+              moltin.Product.List({category: $stateParams.id}, function(products){
                 deferred.resolve(products);
               });
             });
@@ -104,24 +113,25 @@ angular
           }
         }
       })
-      .when('/collection/:id', {
+      .state('collection', {
+        url: '/collection/:id',
         templateUrl: 'views/collection.html',
         controller: 'CollectionCtrl',
         controllerAs: 'collection',
         resolve: {
-          collection: function($q, $route, MoltinAuth) {
+          collection: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Collection.Get($route.current.params.id, function(collection) {
+              moltin.Collection.Get($stateParams.id, function(collection) {
                 deferred.resolve(collection);
               });
             });
-            return deferred.promise
+            return deferred.promise;
           },
-          products: function($q, $route, MoltinAuth) {
+          products: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Product.List({collection: $route.current.params.id}, function(products){
+              moltin.Product.List({collection: $stateParams.id}, function(products){
                 deferred.resolve(products);
               });
             });
@@ -129,24 +139,25 @@ angular
           }
         }
       })
-      .when('/brand/:id', {
+      .state('brand', {
+        url: '/brand/:id',
         templateUrl: 'views/brand.html',
         controller: 'BrandCtrl',
         controllerAs: 'brand',
         resolve: {
-          brand: function($q, $route, MoltinAuth) {
+          brand: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Brand.Get($route.current.params.id, function(brand) {
+              moltin.Brand.Get($stateParams.id, function(brand) {
                 deferred.resolve(brand);
               });
             });
-            return deferred.promise
+            return deferred.promise;
           },
-          products: function($q, $route, MoltinAuth) {
+          products: function($q, $stateParams, MoltinAuth) {
             var deferred = $q.defer();
             MoltinAuth.then(function(moltin){
-              moltin.Product.List({brand: $route.current.params.id}, function(products){
+              moltin.Product.List({brand: $stateParams.id}, function(products){
                 deferred.resolve(products);
               });
             });
@@ -154,7 +165,8 @@ angular
           }
         }
       })
-      .when('/cart', {
+      .state('cart', {
+        url: '/cart',
         templateUrl: 'views/cart.html',
         controller: 'CartCtrl',
         controllerAs: 'cart',
@@ -169,8 +181,5 @@ angular
             return deferred.promise;
           }
         }
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });
