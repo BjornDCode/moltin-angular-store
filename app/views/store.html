@@ -1,0 +1,27 @@
+<h2>Categories</h2>
+<ul>
+  <li ng-repeat="category in categories">
+    <a ng-href="#/category/{{category.id}}">{{category.title}}</a> ({{category.description}})
+  </li>
+</ul>
+
+<h2>Products:</h2>
+<ul>
+  <li ng-repeat="product in allProducts">
+    <a ng-href="#/product/{{product.id}}">{{product.title}}</a> ({{product.description}})
+  </li>
+</ul>
+
+ <h2>Collections</h2>
+ <ul>
+  <li ng-repeat="collection in collections">
+    <a ng-href="#/collection/{{collection.id}}">{{collection.title}}</a> ({{collection.description}})
+  </li>
+ </ul>
+
+ <h2>Brands</h2>
+ <ul>
+  <li ng-repeat="brand in brands">
+    <a ng-href="#/brand/{{brand.id}}">{{brand.title}}</a> ({{brand.description}})
+  </li>
+ </ul>
