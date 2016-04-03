@@ -10,5 +10,4 @@
 angular.module('storeApp')
   .controller('CartCtrl', function ($scope, cart) {
     $scope.car = cart;
-    console.log(cart);
   });

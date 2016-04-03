@@ -11,5 +11,4 @@ angular.module('storeApp')
   .controller('BrandCtrl', function ($scope, brand, products) {
     $scope.bra = brand;
     $scope.products = products;
-    console.log(products);
   });

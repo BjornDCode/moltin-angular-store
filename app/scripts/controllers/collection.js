@@ -11,5 +11,4 @@ angular.module('storeApp')
   .controller('CollectionCtrl', function ($scope, collection, products) {
     $scope.collect = collection;
     $scope.products = products;
-    console.log(products);
   });
