@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/vendor/normalize.css">
     <link rel="stylesheet" href="styles/vendor/toast.css">
+    <link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -22,29 +26,30 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <!--<nav class="mainNav">
-        <a ng-href="#/">Home</a>
-        <a ng-href="#/cart">Cart</a>
-      </nav>-->
-      <div ng-controller="NavCtrl">
-        <nav>
-          <a href="#/">Home</a>
-          <a href="#/cart">Cart</a>
-          <div ng-repeat="category in categories" class="categories">
-            <a href="#/category/{{category.id}}">{{category.title}}</a>
-          </div>
-        </nav>
-      </div>
-    </div>
 
-    <div class="container">
-      <div ui-view=""></div>
-    </div>
+      <header class="mainHeader">
+        <div class="container" ng-controller="NavCtrl">
+          <a href="#/" class="logo">Gotham</a>
+          <nav class="mainNav">
+            <div class="categories">
+              <a ng-repeat="category in categories" href="#/category/{{category.id}}">{{category.title}}</a>
+            </div>
+            <div class="cart">
+              <a href="#/cart"><i class="fa fa-shopping-cart"></i>0 items</a>
+            </div>
+          </nav>
+        </div>
+      </header>
 
-    <div class="footer">
-      Footer
-    </div>
+      <main class="mainContent">
+        <div ui-view="" class="container"></div>
+      </main>
+
+      <footer class="mainFooter">
+        Footer
+      </footer>
+
+
 
     <script src="https://js.moltin.com/v1"></script>
 

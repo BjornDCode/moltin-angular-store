@@ -1,9 +1,19 @@
-<h2>Categories</h2>
-<ul>
-  <li ng-repeat="category in categories">
-    <a ng-href="#/category/{{category.id}}">{{category.title}}</a> ({{category.description}})
-  </li>
-</ul>
+
+<div class="featured">
+  <div class="jumbo-text">
+    <span>25% off</span>
+    Everything
+
+  </div>
+</div>
+
+<div class="categories row">
+  <div ng-repeat="category in categories" class="col col--1-of-5">
+    <a ng-href="#/category/{{category.id}}">{{category.title}}</a>
+  </div>
+</div>
+
+
 
 <h2>Products:</h2>
 <ul>

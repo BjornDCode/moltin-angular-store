@@ -1,0 +1,45 @@
+
+.mainHeader
+  width: 100%
+  border-bottom: 1px solid $tertiary-color
+  margin-bottom: 1.25em
+
+  .container
+    display: flex
+    padding: 0.5em
+
+    align-items: center
+    justify-content: space-between
+
+  .logo
+    font:
+      family: $logo
+      size: 3em
+    text-decoration: none
+
+  .mainNav
+    div
+      display: inline-block
+
+    a
+      text-decoration: none
+      text-transform: uppercase
+
+    .categories
+      display: inline-block
+
+      a
+        margin-left: 1em
+        &:hover
+          text-decoration: underline
+
+    .cart
+      margin-left: 2em
+      padding-left: 2em
+      border-left: 1px solid $primary-color
+
+      a
+        &:hover
+          color: $secondary-color
+      i
+        margin-right: .5em

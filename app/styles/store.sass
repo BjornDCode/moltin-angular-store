@@ -1,0 +1,45 @@
+.mainContent
+
+  .featured
+    position: relative
+    height: 20em
+    margin-bottom: 1.25rem
+    background:
+      image: url('../images/jumbo.jpg')
+      size: cover
+
+    .jumbo-text
+      position: absolute
+      left: 3em
+      bottom: 1em
+      text-transform: uppercase
+      color: $bg-color
+      font:
+        size: 2em
+        family: $secondary-font
+
+      span
+        display: block
+        font:
+          size: 2em
+          family: $secondary-font
+        line-height: 2rem
+
+  .categories
+
+    .col
+      margin-right: 0
+
+      a
+        background-color: $primary-color
+        color: $bg-color
+        text-decoration: none
+        text-align: center
+        text-transform: uppercase
+        display: block
+        width: 100%
+        height: 3em
+        line-height: 3em
+
+        &:hover
+          background-color: lighten($primary-color, 15%)
