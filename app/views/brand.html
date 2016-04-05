@@ -1,7 +1,6 @@
 <h2>{{bra.title}}</h2>
 
-<ul>
-  <li ng-repeat="product in products">
-    <a ng-href="#/product/{{product.id}}">{{product.title}}</a> ({{product.description}})
-  </li>
-</ul>
+<div class="row">
+    <product ng-repeat="product in products" class="col col--1-of-4"></product>
+    <p class="noProducts" ng-if="products.length == 0">Sorry, no products available!</p>
+</div>

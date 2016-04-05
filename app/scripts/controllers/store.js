@@ -14,5 +14,4 @@ angular.module('storeApp')
     $scope.categories = categories;
     $scope.collections = collections;
     $scope.brands = brands;
-
   });

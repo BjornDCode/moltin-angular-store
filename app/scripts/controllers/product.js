@@ -10,4 +10,6 @@
 angular.module('storeApp')
 .controller('ProductCtrl', function($scope, product) {
   $scope.prod = product;
+  $scope.prodImgs = product.images;
+  console.log(product.images);
 });
