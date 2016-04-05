@@ -1,0 +1,12 @@
+
+
+
+  <figure class="product">
+    <a ng-href="#/product/{{product.id}}">
+      <img src="{{product.images[0].url.https}}" alt="">
+      <h4>{{product.title}}</h4>
+      <p class="price">{{product.price.value}}
+        <span class="lowStock" ng-if="product.stock_status.value == 'Low Stock'">({{product.stock_status.value}})</span>
+        <span class="noStock" ng-if="product.stock_status.value == 'Out Of Stock'">({{product.stock_status.value}})</span></p>
+    </a>
+  </figure>

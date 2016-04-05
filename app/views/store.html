@@ -1,5 +1,5 @@
 
-<div class="featured">
+<div class="jumbo">
   <div class="jumbo-text">
     <span>25% off</span>
     Everything
@@ -15,23 +15,14 @@
 
 
 
-<h2>Products:</h2>
-<ul>
-  <li ng-repeat="product in allProducts">
-    <a ng-href="#/product/{{product.id}}">{{product.title}}</a> ({{product.description}})
-  </li>
-</ul>
+<h2>Featured</h2>
+<div class="featured row">
+    <product ng-repeat="product in allProducts" ng-if="product.collection.value == 'Featured'" class="col col--1-of-4"></product>
+</div>
 
- <h2>Collections</h2>
- <ul>
-  <li ng-repeat="collection in collections">
-    <a ng-href="#/collection/{{collection.id}}">{{collection.title}}</a> ({{collection.description}})
-  </li>
- </ul>
-
- <h2>Brands</h2>
- <ul>
-  <li ng-repeat="brand in brands">
-    <a ng-href="#/brand/{{brand.id}}">{{brand.title}}</a> ({{brand.description}})
-  </li>
- </ul>
+<h2>Selected Brands</h2>
+<div class="brands row">
+  <figure ng-repeat="brand in brands" ng-if="brand.images.length > 0" class="col col--1-of-3">
+    <a ng-href="#/brand/{{brand.id}}"><img src="{{brand.images[0].url.https}}" alt="{{brand.title}}"></a>
+  </figure>
+</div>

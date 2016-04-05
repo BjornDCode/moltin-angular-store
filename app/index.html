@@ -27,12 +27,14 @@
 
     <!-- Add your site or application content here -->
 
+
       <header class="mainHeader">
         <div class="container" ng-controller="NavCtrl">
-          <a href="#/" class="logo">Gotham</a>
-          <nav class="mainNav">
+          <a ng-href="#/" class="logo">Gotham</a>
+          <a ng-href="#" class="navToggle" ng-click="showNav = !showNav"><i class="fa fa-bars"></i></a>
+          <nav class="mainNav" ng-if="showNav">
             <div class="categories">
-              <a ng-repeat="category in categories" href="#/category/{{category.id}}">{{category.title}}</a>
+              <a ng-repeat="category in categories" ng-href="#/category/{{category.id}}">{{category.title}}</a>
             </div>
             <div class="cart">
               <a href="#/cart"><i class="fa fa-shopping-cart"></i>0 items</a>
@@ -46,8 +48,47 @@
       </main>
 
       <footer class="mainFooter">
-        Footer
+        <div class="container">
+          <div class="column">
+            <h4>Help</h4>
+            <ul>
+              <li><a ng-href="#">FAQ</a></li>
+              <li><a ng-href="#">Knowledgebase</a></li>
+              <li><a ng-href="#">Return Items</a></li>
+              <li><a ng-href="#">Track Your Order</a></li>
+              <li><a ng-href="#">Support</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h4>Learn More</h4>
+            <ul>
+              <li><a ng-href="#">About Us</a></li>
+              <li><a ng-href="#">Payment Options</a></li>
+              <li><a ng-href="#">Privacy Policy</a></li>
+              <li><a ng-href="#">Terms & Conditions</a></li>
+            </ul>
+          </div>
+          <div class="column">
+            <h4>Follow Us</h4>
+            <ul>
+              <li>
+                <a ng-href="#"><i class="fa fa-facebook-square"> Facebook</i></a>
+              </li>
+              <li>
+                <a ng-href="#"><i class="fa fa-twitter-square"> Twitter</i></a>
+              </li>
+              <li>
+                <a ng-href="#"><i class="fa fa-google-plus-square"> Google Plus</i></a>
+              </li>
+              <li>
+                <a ng-href="#"><i class="fa fa-youtube-square"> Youtube</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </footer>
+
+
 
 
 
@@ -76,6 +117,7 @@
         <script src="scripts/controllers/cart.js"></script>
         <script src="scripts/services/moltin.js"></script>
         <script src="scripts/controllers/nav.js"></script>
+        <script src="scripts/directives/product.js"></script>
         <!-- endbuild -->
 </body>
 </html>

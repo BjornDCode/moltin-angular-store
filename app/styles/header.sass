@@ -17,6 +17,9 @@
       size: 3em
     text-decoration: none
 
+  .navToggle
+    display: none
+
   .mainNav
     div
       display: inline-block
@@ -43,3 +46,50 @@
           color: $secondary-color
       i
         margin-right: .5em
+
+  @media screen and (max-width: $breakpoint-large)
+
+    .logo
+      font-size: 2.5em
+
+  @media screen and (max-width: $breakpoint-medium)
+    position: relative
+
+    .navToggle
+      display: block
+
+      i
+        font-size: 1.5em
+
+    .mainNav
+      position: absolute
+      top: 100%
+      right: 0
+      z-index: 100
+      width: 50%
+
+      div
+        display: block
+        width: 100%
+
+      a
+        display: block
+        background-color: $bg-color
+        width: 100%
+        padding: .5em 0 .5em 1em
+        border-top: 1px solid $tertiary-color
+
+      .categories
+        a
+          margin-left: 0
+
+
+
+      .cart
+        margin-left: 0
+        padding-left: 0
+        border: none
+
+  @media screen and (max-width: $breakpoint-small)
+    .mainNav
+      width: 100%
