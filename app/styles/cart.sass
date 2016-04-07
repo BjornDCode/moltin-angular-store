@@ -1,0 +1,33 @@
+
+.cart
+  min-height: 40vh
+
+  table
+    width: 100%
+
+    text-align: center
+    border-collapse: collapse
+
+    thead
+      th
+        background-color: $primary-color
+        color: $bg-color
+        padding: .5em
+
+    tbody
+      tr
+        &:nth-of-type(2n)
+          background-color: $tertiary-color
+
+        td
+          padding: .5em
+
+    .deleteItem
+      cursor: pointer
+
+.cartTotal
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  p
+    font-weight: bold

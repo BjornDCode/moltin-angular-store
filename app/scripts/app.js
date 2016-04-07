@@ -84,6 +84,9 @@ angular
               });
             });
             return deferred.promise;
+          },
+          moltin: function($q, MoltinAuth) {
+            return MoltinAuth;
           }
         }
       })
@@ -179,6 +182,9 @@ angular
               });
             });
             return deferred.promise;
+          },
+          moltin: function($q, MoltinAuth) {
+            return MoltinAuth;
           }
         }
       });

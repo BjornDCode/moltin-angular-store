@@ -1,9 +1,30 @@
 <h2>Cart</h2>
 
-<ul>
-  <li ng-repeat="item in car">
-    <p></p>
-  </li>
-</ul>
+<div class="cart">
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price pr. item</th>
+        <th>Total Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in car.contents">
+        <td><i ng-click="deleteItem(item.id)" class="fa fa-times deleteItem"></i></td>
+        <td><a ng-href="#/product/{{item.id}}">{{item.name}}</a></td>
+        <td><input type="number" ng-model="item.quantity" ng-change="updateItem(item.id, item.quantity)"></td>
+        <td>£{{item.price}}</td>
+        <td>{{item.totals.pre_discount.formatted.with_tax}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<p>{{car.total_items}} items in the cart</p>
+
+<div class="cartTotal">
+  <p>{{car.total_items}} items in the cart</p>
+  <p>Total Price: {{car.totals.pre_discount.formatted.with_tax}}</p>
+</div>

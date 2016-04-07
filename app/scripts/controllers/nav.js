@@ -8,7 +8,7 @@
  * Controller of the storeApp
  */
 angular.module('storeApp')
-.controller('NavCtrl', function($scope, $q, MoltinAuth, $window) {
+.controller('NavCtrl', function($scope, $q, MoltinAuth, $window, $route, $rootScope) {
 
   // Set the width of the window
   var windowWidth = $window.innerWidth;
@@ -37,5 +37,35 @@ angular.module('storeApp')
   getCategories().then(function(data){
     $scope.categories = data;
   });
+
+  // Get count of items in cart promise
+  function getCartItemsPromise() {
+    var deferred = $q.defer();
+    MoltinAuth.then(function(moltin){
+      moltin.Cart.Contents(function(items){
+        deferred.resolve(items);
+      });
+    });
+    return deferred.promise;
+  }
+
+  // Resolve count of items in cart promise
+  function getCartItems() {
+    getCartItemsPromise().then(function(cart){
+      // Update count of items in count
+      $scope.cartTotal = cart.total_unique_items;
+      // Reload page to apply new scope
+      $route.reload();
+    });
+  };
+
+  // Call tll the count of items on page load
+  getCartItems();
+
+  // Update count of items when event get broadcastet from addProduct to basket or from removeProduct in cart
+  $rootScope.$on('updateCartCount', function(){
+    getCartItems();
+  });
+
 
 });

@@ -1,0 +1,11 @@
+<div class="slider">
+  <div class="slide" ng-repeat="img in images" ng-show="img.visible">
+    <img ng-src="{{img.url.https}}" alt="{{img.name}}">
+  </div>
+  <div class="arrows">
+    <div class="arrowFlex">
+      <a href="" ng-click="prev()"><i class="fa fa-arrow-left"></i></a>
+      <a href="" ng-click="next()"><i class="fa fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>

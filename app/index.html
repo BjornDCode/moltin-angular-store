@@ -36,8 +36,8 @@
             <div class="categories">
               <a ng-repeat="category in categories" ng-href="#/category/{{category.id}}">{{category.title}}</a>
             </div>
-            <div class="cart">
-              <a href="#/cart"><i class="fa fa-shopping-cart"></i>0 items</a>
+            <div class="cartCount">
+              <a href="#/cart"><i class="fa fa-shopping-cart"></i>{{cartTotal}} items</a>
             </div>
           </nav>
         </div>
@@ -118,6 +118,7 @@
         <script src="scripts/services/moltin.js"></script>
         <script src="scripts/controllers/nav.js"></script>
         <script src="scripts/directives/product.js"></script>
+        <script src="scripts/directives/slider.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -4,9 +4,24 @@
   <figure ng-repeat="img in prodImgs" class="col col--1-of-3">
     <img src="{{img.url.https}}" alt="{{prod.slug}}">
   </figure>
-  <div class="prodDesc col col--2-of-3">
-    <p>{{prod.description}}</p>
-    <p>Brand: <a ng-href="#/brand/{{prod.brand.data.id}}">{{prod.brand.value}}</a></p>
-    <div class="price">{{prod.price.value}}</div>
+  <slider images="images" class="col col--1-of-3"></slider>
+  <div class="info col col--2-of-3">
+    <div class="price">
+      <h3>{{prod.price.value}}</h3>
+      <span class="lowStock" ng-if="prod.stock_status.value == 'Low Stock'">({{prod.stock_status.value}})</span>
+      <span class="noStock" ng-if="prod.stock_status.value == 'Out Of Stock'">({{prod.stock_status.value}})</span>
+    </div>
+    <h4>Description</h4>
+    <p class="description">{{prod.description}}</p>
+    <p class="brand">Brand: <a ng-href="#/brand/{{prod.brand.data.id}}">{{prod.brand.value}}</a></p>
+    <div class="basketArea">
+      <button class="addToBasket" ng-if="!addStatus" ng-click="addCart()">Add To Basket</button>
+      <button class="addToBasket" ng-if="addStatus">{{addStatus}}</button>
+      <div class="quantity">
+        <p>Quantity:</p>
+        <input type="number" class="quantity" ng-model="quantity" min="1">
+      </div>
+    </div>
+    <p class="message" ng-if="message">{{message}}</p>
   </div>
 </div>

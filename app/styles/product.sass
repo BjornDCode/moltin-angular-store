@@ -1,24 +1,90 @@
-
 .product
-  margin: 0
 
-  a
-    text-decoration: none
+  .slider
+    text-align: center
+    position: relative
+    padding: 0
 
-    &:hover
-      color: $secondary-color
+    .arrows
+      width: 100%
+      position: absolute
+      top: 50%
 
-  img
-    max-width: 100%
-
-  h4
-    margin-bottom: 0
+      .arrowFlex
+        width: 100%
+        display: flex
+        flex-direction: row
+        justify-content: space-between
 
   .price
-    margin-top: 0
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
 
-  .lowStock
-    color: $low-stock
+    h3
+      margin: 0 .5em 0 0
 
-  .noStock
-    color: $no-stock
+  .info
+    .brand
+      font-weight: bold
+      a
+        color: $secondary-color
+        font-weight: normal
+        &:hover
+          text-decoration: underline
+
+  .basketArea
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+
+  .addToBasket
+    background-color: $secondary-color
+    color: $bg-color
+    border: none
+    padding: 1em
+    text-transform: uppercase
+
+    &:hover
+      background-color: lighten($secondary-color, 10%)
+
+  .quantity
+    padding: 0
+    margin-left: 1em
+    p
+      margin-top: 0
+      margin-bottom: 0.5em
+      font-weight: bold
+
+    input
+      padding: .5em
+      margin: 0
+
+  .message
+    background-color: $low-stock
+    color: $bg-color
+    display: inline-block
+    padding: 1em
+
+  @media screen and (max-width: $breakpoint-very-large)
+    .col--1-of-3, .col--2-of-3
+      width: 50%
+
+
+  @media screen and (max-width: $breakpoint-medium)
+    .col--1-of-3, .col--2-of-3
+      margin: 0 auto
+
+    .col--2-of-3
+      width: 80%
+
+  @media screen and (max-width: $breakpoint-small)
+    .col--2-of-3
+      .basketArea
+        flex-direction: column
+
+        .quantity
+          text-align: center
+          p
+            margin-top: 1em
