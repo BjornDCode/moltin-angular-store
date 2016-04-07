@@ -216,5 +216,16 @@ angular
             return MoltinAuth;
           }
         }
+      })
+      .state('payment', {
+        url: '/payment',
+        templateUrl: 'views/payment.html',
+        controller: 'PaymentCtrl',
+        controllerAs: 'payment',
+        resolve: {
+          moltin: function($q, MoltinAuth) {
+            return MoltinAuth;
+          }
+        }
       });
   });

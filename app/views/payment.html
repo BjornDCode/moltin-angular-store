@@ -1,0 +1,31 @@
+<h2>Payment</h2>
+
+<div class="payment">
+  <form>
+    <div>
+      <label for="firstName">First Name</label>
+      <input type="text" ng-model="data.first_name" id="firstName" placeholder="John">
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" ng-model="data.last_name" id="lastName" placeholder="Doe">
+    </div>
+    <div>
+      <label for="number">Card Number</label>
+      <input type="text" ng-model="data.number" id="number" placeholder="XXXX-XXXX-XXXX-XXXX">
+    </div>
+    <div>
+      <label for="expiryMonth">Expiry Month</label>
+      <input type="text" ng-model="data.expiry_month" id="expiryMonth" placeholder="DD">
+    </div>
+    <div>
+      <label for="expiryYear">Expiry Year</label>
+      <input type="text" ng-model="data.expiry_year" id="expiryYear" placeholder="YYYY">
+    </div>
+    <div>
+      <label for="cvv">CVV</label>
+      <input type="text" ng-model="data.cvv" id="cvv" placeholder="XXX">
+    </div>
+    <button type="button" ng-click="fullfillPayment(data)">Pay</button>
+  </form>
+</div>

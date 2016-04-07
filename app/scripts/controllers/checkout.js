@@ -26,8 +26,10 @@ angular.module('storeApp')
         ship_to: $scope.data.ship_bill ? 'bill_to' : $scope.data.ship,
       }, function(order) {
           console.log(order);
-      }, function(error) {
-          // Something went wrong...
+          $rootScope.order = order;
+          $rootScope.$apply(function() {
+            $location.path('/payment');
+          });
       });
     };
   });
