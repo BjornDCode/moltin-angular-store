@@ -31,7 +31,7 @@
       <header class="mainHeader">
         <div class="container" ng-controller="NavCtrl">
           <a ng-href="#/" class="logo">Gotham</a>
-          <a ng-href="#" class="navToggle" ng-click="showNav = !showNav"><i class="fa fa-bars"></i></a>
+          <a ng-href="" class="navToggle" ng-click="showNav = !showNav"><i class="fa fa-bars"></i></a>
           <nav class="mainNav" ng-if="showNav">
             <div class="categories">
               <a ng-repeat="category in categories" ng-href="#/category/{{category.id}}">{{category.title}}</a>
@@ -93,6 +93,7 @@
 
 
     <script src="https://js.moltin.com/v1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -119,6 +120,7 @@
         <script src="scripts/controllers/nav.js"></script>
         <script src="scripts/directives/product.js"></script>
         <script src="scripts/directives/slider.js"></script>
+        <script src="scripts/controllers/checkout.js"></script>
         <!-- endbuild -->
 </body>
 </html>

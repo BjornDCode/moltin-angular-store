@@ -187,5 +187,34 @@ angular
             return MoltinAuth;
           }
         }
+      })
+      .state('checkout', {
+        url: '/checkout',
+        templateUrl: 'views/checkout.html',
+        controller: 'CheckoutCtrl',
+        controllerAs: 'checkout',
+        resolve: {
+          checkout: function($q, MoltinAuth) {
+            var deferred = $q.defer();
+            MoltinAuth.then(function(moltin){
+              moltin.Cart.Checkout(function(checkout){
+                deferred.resolve(checkout);
+              });
+            });
+            return deferred.promise;
+          },
+          fields: function($q, MoltinAuth) {
+            var deferred = $q.defer();
+            MoltinAuth.then(function(moltin){
+              moltin.Address.Fields(null, null, function(fields){
+                deferred.resolve(fields);
+              });
+            });
+            return deferred.promise;
+          },
+          moltin: function($q, MoltinAuth) {
+            return MoltinAuth;
+          }
+        }
       });
   });
