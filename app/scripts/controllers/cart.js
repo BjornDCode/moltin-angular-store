@@ -10,9 +10,7 @@
 angular.module('storeApp')
   .controller('CartCtrl', function ($scope, cart, moltin, $route, $rootScope) {
     // Set the cart on the scope
-
     $scope.car = cart;
-    console.log($scope.car);
     // Delete items from cart
     $scope.deleteItem = function(id) {
       // Update the item with a quanity of 0

@@ -1,56 +1,63 @@
 
-<form class="checkout" ng-submit="createOrder(data)">
+<h2>Checkout</h2>
 
-  <h4>Customer Information</h4>
-  <div class="customerInfo">
-    <div class="billingAddress">
+<form class="checkout inputForm" name="checkoutForm" ng-submit="createOrder(data)" novalidate>
+  <div class="customerInfo row">
+    <div class="billingAddress col col--1-of-2">
+      <h4>Billing Address</h4>
       <div class="customerEmail">
         <label for="email">Email<span class="required">*</span></label>
         <div>
-          <input type="email" id="email" ng-model="data.email" placeholder="Email">
+          <input type="email" id="email" ng-model="data.email" placeholder="Email" required>
         </div>
       </div>
       <div ng-repeat="field in fields" ng-if="field.slug != 'save_as' && field.slug != 'customer'">
         <label for="bill_{{field.slug}}">{{field.name}}<span class="required" ng-if="field.required">*</span></label>
         <div ng-switch on="field.type">
-          <select name="bill_{{ field.slug }}" class="form-control" ng-options="k as v for (k, v) in field.available" ng-model="data.bill[field.slug]" ng-switch-when="country"></select>
-          <input type="text" id="bill_{{field.slug}}" ng-model="data.bill[field.slug]" placeholder="{{field.name}}" ng-switch-default>
+          <select name="bill_{{ field.slug }}" ng-options="k as v for (k, v) in field.available" ng-model="data.bill[field.slug]" required ng-switch-when="country"></select>
+          <input type="text" id="bill_{{field.slug}}" ng-model="data.bill[field.slug]" placeholder="{{field.name}}" ng-if="field.required" required ng-switch-default>
+          <input type="text" id="bill_{{field.slug}}" ng-model="data.bill[field.slug]" placeholder="{{field.name}}" ng-if="!field.required" ng-switch-default>
         </div>
       </div>
     </div>
-    <div class="shippingAddress">
+    <div class="shippingAddress col col--1-of-2">
+      <h4>Shipping Address</h4>
       <div class="shiptobilling">
-        <label>
-          <input type="checkbox" value="1" ng-model="data.ship_bill" onclick="jQuery('.shipping-address').toggle()">
-          Ship to Billing Address?
-        </label>
+        <label class="whiteSpaceLabel">Shipping Information</label>
+        <label for="shipToBillBox" class="checkboxLabel">Ship to Billing Address?</label>
+        <input type="checkbox" value="1" id="shipToBillBox" ng-model="data.ship_bill">
       </div>
-      <div class="shipping-address">
+      <div class="shipping-address" ng-if="!data.ship_bill">
         <div ng-repeat="field in fields" ng-if="field.slug != 'save_as' && field.slug != 'customer'">
           <label for="ship_{{field.slug}}">{{field.name}}<span class="required" ng-if="field.required">*</span></label>
           <div ng-switch on="field.type">
-            <select name="ship_{{ field.slug }}" class="form-control" ng-options="k as v for (k, v) in field.available" ng-model="data.ship[field.slug]" ng-switch-when="country"></select>
-            <input type="text" id="ship_{{field.slug}}" ng-model="data.ship[field.slug]" placeholder="{{field.name}}" ng-switch-default>
+            <select name="ship_{{ field.slug }}" ng-options="k as v for (k, v) in field.available" ng-model="data.ship[field.slug]" required ng-switch-when="country"></select>
+            <input type="text" id="ship_{{field.slug}}" ng-if="field.required" ng-model="data.ship[field.slug]" placeholder="{{field.name}}" required ng-switch-default>
+            <input type="text" id="ship_{{field.slug}}" ng-if="!field.required" ng-model="data.ship[field.slug]" placeholder="{{field.name}}" ng-switch-default>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="gateways">
-    <h4>Payment Methods</h4>
-    <div class="gateway" ng-repeat="gateway in gateways">
-      <input type="radio" id="{{gateway.name}}" value="{{gateway.slug}}" name="gateway" ng-model="data.gateway">
-      <label for="{{gateway.name}}">{{gateway.description}} <span>({{gateway.name}})</span></label>
-    </div>
-  </div>
+  <div class="checkoutOptions row">
 
-  <div class="shipping">
-    <h4>Shipping Methods</h4>
-    <div class="shippingMethod" ng-repeat="method in shipping">
-      <input type="radio" id="{{method.slug}}" value="{{method.slug}}" name="shipping" ng-model="data.shipping">
-      <label for="{{method.slug}}">{{method.title}} <span>({{method.description}} - {{method.company}})</span></label>
+    <div class="gateways col col--1-of-2">
+      <h4>Payment Methods</h4>
+      <div class="gateway" ng-repeat="gateway in gateways">
+        <input type="radio" id="{{gateway.name}}" value="{{gateway.slug}}" name="gateway" ng-model="data.gateway" required>
+        <label for="{{gateway.name}}">{{gateway.description}} <span>({{gateway.name}})</span></label>
+      </div>
     </div>
+
+    <div class="shipping col col--1-of-2">
+      <h4>Shipping Methods</h4>
+      <div class="shippingMethod" ng-repeat="method in shipping">
+        <input type="radio" id="{{method.slug}}" value="{{method.slug}}" name="shipping" ng-model="data.shipping" required>
+        <label for="{{method.slug}}">{{method.title}} <span>({{method.price.value}} - {{method.description}} - {{method.company}})</span></label>
+      </div>
+    </div>
+
   </div>
 
   <div class="order">
@@ -79,6 +86,6 @@
     </div>
   </div>
 
-  <button class="submitCustomer" type="submit">Proceed</button>
+  <button class="submitCustomer" ng-disabled="checkoutForm.$invalid" type="submit">Proceed</button>
 
 </form>

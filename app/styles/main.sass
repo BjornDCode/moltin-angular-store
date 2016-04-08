@@ -54,10 +54,70 @@ figure
   color: $no-stock
 
 .message
-  background-color: $low-stock
   color: $bg-color
   display: inline-block
   padding: 1em
+
+.neutral-message
+  background-color: $low-stock
+
+.succes-message
+  background-color: $succes
+
+.fail-message
+  background-color: $no-stock
+
+.inputForm
+  .col
+    margin-bottom: 1em
+
+  input
+    padding: .5em
+    width: 100%
+    box-sizing: border-box
+
+  input.ng-dirty
+    &.ng-valid
+      border: 2px solid $succes
+      &:focus
+        box-shadow: 0px 0px 4px $succes
+        outline: none
+
+    &.ng-invalid
+      border: 2px solid $no-stock
+      &:focus
+        box-shadow: 0px 0px 4px $no-stock
+        outline: none
+
+  label
+    display: block
+    margin-bottom: 0.25em
+
+  button:disabled
+    background-color: lighten($secondary-color, 25%)
+    &:hover
+      background-color: lighten($secondary-color, 25%)
+
+table
+  width: 100%
+
+  text-align: center
+  border-collapse: collapse
+
+  thead
+    th
+      background-color: $primary-color
+      color: $bg-color
+      padding: .5em
+
+  tbody
+    tr
+      &:nth-of-type(2n)
+        background-color: $tertiary-color
+
+      td
+        padding: .5em
+
 
 @media screen and (max-width: $breakpoint-very-large)
   .container
