@@ -7,7 +7,9 @@ version 0.15.1.
 
 Run `grunt` for building and `grunt serve` for preview.
 
-## Testing
 
-Running `grunt test` will run the unit tests with karma.
 # moltin-angular-store
+
+Full eCommerce project made with moltin.js and angular.js.
+Moltin provides a backend and API for a webshop.
+The project is built with angular
