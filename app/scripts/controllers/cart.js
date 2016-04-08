@@ -10,8 +10,9 @@
 angular.module('storeApp')
   .controller('CartCtrl', function ($scope, cart, moltin, $route, $rootScope) {
     // Set the cart on the scope
-    console.log(cart);
+
     $scope.car = cart;
+    console.log($scope.car);
     // Delete items from cart
     $scope.deleteItem = function(id) {
       // Update the item with a quanity of 0
@@ -29,7 +30,7 @@ angular.module('storeApp')
 
     // Update quantity of item in cart
     $scope.updateItem = function(id, quantity) {
-        // Update the item with a quanity of 0
+        // Update the item with the new quanity
         moltin.Cart.Update(id, {quantity: quantity}, function(item){
           // Reset the cart on the scope
           moltin.Cart.Contents(function(items){
@@ -38,8 +39,6 @@ angular.module('storeApp')
             $route.reload();
           });
         });
-
-
     }
-    //Checkout: Check if quantity is bigger than stock level
+
   });

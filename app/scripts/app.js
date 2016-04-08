@@ -212,6 +212,15 @@ angular
             });
             return deferred.promise;
           },
+          cart: function($q, MoltinAuth) {
+            var deferred = $q.defer();
+            MoltinAuth.then(function(moltin){
+              moltin.Cart.Contents(function(items){
+                deferred.resolve(items);
+              });
+            });
+            return deferred.promise;
+          },
           moltin: function($q, MoltinAuth) {
             return MoltinAuth;
           }
@@ -227,5 +236,11 @@ angular
             return MoltinAuth;
           }
         }
+      })
+      .state('complete', {
+        url: '/complete',
+        templateUrl: 'views/complete.html',
+        controller: 'CompleteCtrl',
+        controllerAs: 'complete'
       });
   });

@@ -5,7 +5,8 @@
 @import "store"
 @import "footer"
 @import "cart"
-
+@import "checkout"
+@import "payment"
 
 
 *
@@ -51,6 +52,12 @@ figure
 
 .noStock
   color: $no-stock
+
+.message
+  background-color: $low-stock
+  color: $bg-color
+  display: inline-block
+  padding: 1em
 
 @media screen and (max-width: $breakpoint-very-large)
   .container

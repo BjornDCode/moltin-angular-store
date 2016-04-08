@@ -4,6 +4,12 @@
   <h4>Customer Information</h4>
   <div class="customerInfo">
     <div class="billingAddress">
+      <div class="customerEmail">
+        <label for="email">Email<span class="required">*</span></label>
+        <div>
+          <input type="email" id="email" ng-model="data.email" placeholder="Email">
+        </div>
+      </div>
       <div ng-repeat="field in fields" ng-if="field.slug != 'save_as' && field.slug != 'customer'">
         <label for="bill_{{field.slug}}">{{field.name}}<span class="required" ng-if="field.required">*</span></label>
         <div ng-switch on="field.type">
@@ -16,7 +22,7 @@
       <div class="shiptobilling">
         <label>
           <input type="checkbox" value="1" ng-model="data.ship_bill" onclick="jQuery('.shipping-address').toggle()">
-          Ship to Billing Adress?
+          Ship to Billing Address?
         </label>
       </div>
       <div class="shipping-address">
@@ -44,6 +50,32 @@
     <div class="shippingMethod" ng-repeat="method in shipping">
       <input type="radio" id="{{method.slug}}" value="{{method.slug}}" name="shipping" ng-model="data.shipping">
       <label for="{{method.slug}}">{{method.title}} <span>({{method.description}} - {{method.company}})</span></label>
+    </div>
+  </div>
+
+  <div class="order">
+    <table>
+      <thead>
+        <tr>
+
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price pr. item</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in car.contents">
+          <td><a ng-href="#/product/{{item.id}}">{{item.name}}</a></td>
+          <td>{{item.quantity}}</td>
+          <td>£{{item.price}}</td>
+          <td>{{item.totals.pre_discount.formatted.with_tax}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="cartTotal">
+      <p>{{car.total_items}} items in the cart</p>
+      <p>Total Price: {{car.totals.pre_discount.formatted.with_tax}}</p>
     </div>
   </div>
 
