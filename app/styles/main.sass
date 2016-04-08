@@ -100,7 +100,6 @@ figure
 
 table
   width: 100%
-
   text-align: center
   border-collapse: collapse
 
@@ -126,3 +125,47 @@ table
 @media screen and (max-width: $breakpoint-large)
   *
     font-size: 14px
+
+@media screen and (max-width: $breakpoint-medium)
+
+  table
+    text-align: right
+
+  table, thead, tbody, th, td, tr
+    display: block
+
+  thead tr
+    position: absolute
+    top: -9999px
+    left: -9999px
+
+  tr
+    border: 1px solid $tertiary-color
+
+  td
+    border-bottom: 1px solid $primary-color
+    position: relative
+    padding-left: 50%
+
+  td:before
+    position: absolute
+    top: 6px
+    left: 6px
+    width: 45%
+    padding-right: 10px
+    white-space: nowrap
+
+  td:nth-of-type(1):before
+    content: 'Remove Item'
+
+  td:nth-of-type(2):before
+    content: 'Product Name'
+
+  td:nth-of-type(3):before
+    content: 'Quantity'
+
+  td:nth-of-type(4):before
+    content: 'Price pr. Item'
+
+  td:nth-of-type(5):before
+    content: 'Total Price'
