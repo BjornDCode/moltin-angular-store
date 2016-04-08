@@ -7,6 +7,7 @@
  * # product
  */
 angular.module('storeApp')
+  // Product module
   .directive('product', function () {
     return {
       templateUrl: 'views/productmodule.html',

@@ -9,6 +9,8 @@
  */
 angular.module('storeApp')
   .controller('BrandCtrl', function ($scope, brand, products) {
+    // Return a brand
     $scope.bra = brand;
+    // Products from specific brand
     $scope.products = products;
   });

@@ -9,6 +9,8 @@
  */
 angular.module('storeApp')
   .controller('CollectionCtrl', function ($scope, collection, products) {
+    // Return collection
     $scope.collect = collection;
+    // Return products in specific collection
     $scope.products = products;
   });
