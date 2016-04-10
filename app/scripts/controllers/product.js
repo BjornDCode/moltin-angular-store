@@ -25,7 +25,7 @@ angular.module('storeApp')
     // Change the status so the user can see the product is being added
     $scope.addStatus = "Adding...";
     // Check whether the product is out of stock
-    if(product.stock_status.value != "Out Of Stock") {
+    if(product.stock_status.value !== "Out Of Stock") {
       // Moltin function with the product id and quantity from input box
       moltin.Cart.Insert(product.id, $scope.quantity, null, function(cart){
         // Timeout while the product is being added

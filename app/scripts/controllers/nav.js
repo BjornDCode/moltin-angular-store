@@ -57,7 +57,7 @@ angular.module('storeApp')
       // Reload page to apply new scope
       $route.reload();
     });
-  };
+  }
 
   // Call tll the count of items on page load
   getCartItems();

@@ -18,7 +18,7 @@ angular.module('storeApp')
     // Return gateways
     $scope.gateways = checkout.gateways;
     // Bind data from form to a format that can be used in the Moltin function
-    $scope.data = {bill: {}, ship: {}, ship_bill: 0, notes: '', shipping: '', gateway: ''}
+    $scope.data = {bill: {}, ship: {}, ship_bill: 0, notes: '', shipping: '', gateway: ''};
     // Function to create order from a cart
     $scope.createOrder = function() {
       moltin.Cart.Complete({
